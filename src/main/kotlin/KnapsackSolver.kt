@@ -1,5 +1,6 @@
 interface KnapsackSolver {
     fun solve(items: Set<Item>, capacity: Int): Set<Item>
+
     fun measure(items: Set<Item>, capacity: Int): Solution {
         val startTime = System.currentTimeMillis()
         val set = solve(items, capacity)

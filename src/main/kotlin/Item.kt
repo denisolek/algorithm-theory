@@ -5,7 +5,7 @@ class Item(
 ) {
     companion object {
         fun generate(count: Int): Set<Item> = MutableList(count) {
-            Item(name = "JavaItem ${it + 1}", value = (1..100).random(), weight = (300..1000).random())
+            Item(name = "    Item ${it + 1}", value = (1..100).random(), weight = (300..1000).random())
         }.toSet()
     }
 
@@ -15,3 +15,5 @@ class Item(
 fun Set<Item>.weight() = this.sumBy { it.weight }
 
 fun Set<Item>.value() = this.sumBy { it.value }
+
+fun Set<Item>.print() = this.forEach { it.print() }

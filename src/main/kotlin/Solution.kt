@@ -4,8 +4,12 @@ class Solution(
     val time: Long
 ) {
     fun print() {
+        println("=================================")
         println("Method: $method")
-        println("Time: $time")
-        println("Value: ${resultSet.value()}")
+        println("Time: $time ms")
+        println("Total value: ${resultSet.value()}")
+        println("Total weight: ${resultSet.weight()}")
+        println("Items:")
+        resultSet.print()
     }
 }

@@ -1,5 +1,12 @@
+object Setup {
+    const val itemCount = 20
+    const val knapsackCapacity = 3000
+}
+
 fun main() {
-    val backpackCapacity = 1000
-    val items = Item.generate(20)
-    BruteForce().measure(items, backpackCapacity).print()
+    println("Items count: ${Setup.itemCount}")
+    println("Knapsack capacity: ${Setup.knapsackCapacity}")
+
+    val items = Item.generate(Setup.itemCount)
+    BruteForce().measure(items, Setup.knapsackCapacity).print()
 }
