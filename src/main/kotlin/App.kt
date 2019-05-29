@@ -9,4 +9,5 @@ fun main() {
 
     val items = Item.generate(Setup.itemCount)
     BruteForce().measure(items, Setup.knapsackCapacity).print()
+    Dynamic().measure(items, Setup.knapsackCapacity).print()
 }
