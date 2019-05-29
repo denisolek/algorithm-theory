@@ -1,3 +1,5 @@
+import java.util.concurrent.TimeUnit
+
 class Solution(
     val method: String,
     val resultSet: Set<Item>,
@@ -6,7 +8,8 @@ class Solution(
     fun print() {
         println("=================================")
         println("Method: $method")
-        println("Time: $time ms")
+        println("Time nano: $time nano")
+        println("Time ms: ${TimeUnit.NANOSECONDS.toMillis(time)} ms")
         println("Total value: ${resultSet.value()}")
         println("Total weight: ${resultSet.weight()}")
         println("Items:")
