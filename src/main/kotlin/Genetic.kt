@@ -1,5 +1,24 @@
 import java.util.*
 
+class Genetic : KnapsackSolver {
+    override fun solve(items: Set<Item>, capacity: Int): Set<Item> {
+        val kp = KnapsackProblem()
+
+        kp.makePopulation()
+
+        println("=========================================================")
+        println("INITIAL GENERATION:")
+        printPopulation(kp)
+        kp.evalPopulation(kp.population)
+        printFitness(kp)
+        val bestSet = kp.getSummary(0)
+        val test = kp.makeGenerations()
+
+        return setOf()
+    }
+
+}
+
 fun main(args: Array<String>) {
     val kp = KnapsackProblem()
 
@@ -133,7 +152,7 @@ class KnapsackProblem {
             return averageFitness
         }
 
-    fun getSummary(generationIndex: Int) {
+    fun getSummary(generationIndex: Int): String {
         bestGenerationSolution.add(population[bestSolution])
         bestGenerationFitness.add(evalGene(population[bestSolution]))
         averageGenerationFitness.add(averageFitness)
@@ -146,6 +165,8 @@ class KnapsackProblem {
         println("| Cloning:  $cloneCount times")
         println("| Mutation:  $mutationCount times")
         println("-----------------------------------")
+
+        return bestGenerationSolution[generationIndex]
     }
 
     private fun tournamentSelection(): String {
@@ -164,8 +185,8 @@ class KnapsackProblem {
         return topGene.first
     }
 
-    fun makeGenerations() {
-
+    fun makeGenerations(): String {
+    var bestSet = ""
         for (i in 1 until maxGenerations) {
             if (checkForStopCriteria(i)) break
             resetCounters()
@@ -194,8 +215,10 @@ class KnapsackProblem {
             printPopulation(this)
             printFitness(this)
             breedPopulation.clear()
-            getSummary(i)
+            bestSet = getSummary(i)
+
         }
+        return bestSet
     }
 
     private fun resetCounters() {

@@ -1,6 +1,6 @@
 object Setup {
-    const val itemCount = 20
-    const val knapsackCapacity = 100
+    const val itemCount = 10
+    const val knapsackCapacity = 80
     val weightRange = 1 to 50
     val valueRange = 1 to 100
 }
@@ -13,4 +13,5 @@ fun main() {
     BruteForce().measure(items, Setup.knapsackCapacity).print()
     Dynamic().measure(items, Setup.knapsackCapacity).print()
     Greedy().measure(items, Setup.knapsackCapacity).print()
+//    Genetic().measure(items, Setup.knapsackCapacity).print()
 }
